@@ -13,7 +13,7 @@ import (
 func RegisterHandlers() {
 	handler := new(studentsHandler)
 	http.Handle("/students", handler)
-	http.Handle("/students", handler)
+	http.Handle("/students/", handler)
 }
 
 type studentsHandler struct{}

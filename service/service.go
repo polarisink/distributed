@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/polarisink/distributed/registry"
+	"github.com/polarisink/distributed/tools"
 	"log"
 	"net/http"
 )
@@ -25,7 +26,7 @@ func startService(ctx context.Context, name registry.ServiceName, host string, p
 
 	go func() {
 		log.Println(srv.ListenAndServe())
-		err := registry.ShutdownService(fmt.Sprintf("http://%s:%s", host, port))
+		err := registry.ShutdownService(tools.ParseAddress(host, port))
 		if err != nil {
 			log.Println(err)
 		}
@@ -36,7 +37,7 @@ func startService(ctx context.Context, name registry.ServiceName, host string, p
 		fmt.Printf("%v started. Press any key to stop. \n", name)
 		var s string
 		fmt.Scanln(&s)
-		err := registry.ShutdownService(fmt.Sprintf("http://%s:%s", host, port))
+		err := registry.ShutdownService(tools.ParseAddress(host, port))
 		if err != nil {
 			log.Println(err)
 		}
