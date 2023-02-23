@@ -1,0 +1,12 @@
+reg:
+  host: localhost
+  port: 8080
+grade:
+  host: localhost
+  port: 8081
+log:
+  host: localhost
+  port: 8082
+portal:
+  host: localhost
+  port: 8083
